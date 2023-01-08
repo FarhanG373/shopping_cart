@@ -6,46 +6,46 @@ import './Home.scss'
 
 const Home = () => {
   const { state: { products },
-  productState: {
-    byStock,
-    byFastDelivary,
-    byRatings,
-    sort,
-    searchQuery,
-  }
-} = CartState()
+    productState: {
+      byStock,
+      byFastDelivary,
+      byRatings,
+      sort,
+      searchQuery,
+    }
+  } = CartState()
   console.log(products);
 
-const transformProduct = () => {
-  let sortedProduct  = products;
-  if(sort){
-    sortedProduct = sortedProduct.sort((a,b)=>(
-      sort === 'lowToHigh' ? a.price - b.price : b.price - a.price
-    ));
+  const transformProduct = () => {
+    let sortedProduct = products;
+    if (sort) {
+      sortedProduct = sortedProduct.sort((a, b) => (
+        sort === 'lowToHigh' ? a.price - b.price : b.price - a.price
+      ));
+    }
+    if (!byStock) {
+      sortedProduct = sortedProduct.filter((prod) => prod.inStock)
+    }
+    if (byFastDelivary) {
+      sortedProduct = sortedProduct.filter((prod) => prod.byFastDelivary)
+    }
+    if (byRatings) {
+      sortedProduct = sortedProduct.filter((prod) => prod.rating >= byRatings)
+    }
+    if (searchQuery) {
+      sortedProduct = sortedProduct.filter((prod) => prod.name.toLowerCase().includes(searchQuery))
+    }
+    return sortedProduct;
   }
-  if(!byStock) {
-    sortedProduct = sortedProduct.filter((prod)=>prod.inStock)
-  }
-  if(byFastDelivary) {
-    sortedProduct = sortedProduct.filter((prod)=>prod.byFastDelivary)
-  }
-  if(byRatings) {
-    sortedProduct = sortedProduct.filter((prod)=>prod.rating >= byRatings)
-  }
-  if(searchQuery) {
-    sortedProduct = sortedProduct.filter((prod)=>prod.name.toLowerCase().includes(searchQuery))
-  }
-  return sortedProduct;
-}
 
   return (
     <div className='home'>
-      <Filter/>
+      <Filter />
       <div className='prodContaner'>
         {
           transformProduct().map((prod) => {
             return (
-              <SingleProduct prod={prod} key={prod.id}/>
+              <SingleProduct prod={prod} key={prod.id} />
             )
           })
         }

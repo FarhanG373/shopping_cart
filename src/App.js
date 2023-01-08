@@ -7,8 +7,6 @@ import Cart from './pages/Cart/Cart';
 function App() {
   return (
     <div className="App">
-
-https://www.youtube.com/watch?v=HptuMAUaNGk ------------------------ 53:11
       <BrowserRouter>
         <Header></Header>
         <Routes>

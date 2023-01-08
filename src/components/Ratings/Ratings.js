@@ -5,7 +5,7 @@ const Ratings = ({ rating, onClick }) => {
         <div>
             {
                 [...Array(5)].map((_, index) =>
-                    <span key={index} onClick={()=>onClick(index)}>
+                    <span key={index} onClick={() => onClick(index)}>
                         {
                             rating > index ? (
                                 <FaStar />
