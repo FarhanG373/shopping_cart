@@ -1,0 +1,11 @@
+.home {
+    display: flex;
+    .prodContaner {
+        display: flex;
+        flex-wrap: wrap;
+        width: 85%;
+    }
+    .filter {
+        width: 15%;
+    }
+}

@@ -1,0 +1,28 @@
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    .cartData {
+        margin:0px;
+        border-bottom:1px solid #333;
+        padding:1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 10rem;
+        }
+        button {
+            border:0px;
+            background:transparent;
+            color:red;
+        }
+        &:last-child {
+            border:0px;
+        }
+    }
+}
+.totle {
+    display: flex;
+    justify-content: space-between;
+}
